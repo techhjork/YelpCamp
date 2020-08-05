@@ -1,0 +1,58 @@
+<%-include("Partials/header.ejs")-%>
+<div class="ui container">
+<div class="ui message">
+  <div class="ui huge header" style="text-align: center;">
+    BLOG WEBSITE
+  </div>
+  <div class="ui grid">
+    <div class="four column row">
+      <div class="left floated column">
+        <form method="POST" action="">
+          <div class="ui action input">
+      	    <input type="text" placeholder="Search...">
+      	    <a class="ui button">Search</a>
+      	  </div>
+        </form>
+       </div>
+      <div class="right floated column">
+      <div class="ui floated right">
+       <a class="ui red button" href="/blog/new">Add New Camp</a>
+      </div>
+     </div>
+   </div>
+ </div>
+</div>
+</div>
+  <div class="ui message">
+    <h2 align="center">Campground Blogs</h2>
+  </div>
+<div class="ui container">
+ <div class="ui link cards">
+  <% campgrounds.forEach(campground=>{%>
+  <div class="card">
+    <div class="image">
+      <img src="<%= campground.image %>">
+    </div>
+    <div class="content">
+      <div class="header"><%=campground.name%></div>
+      <div class="meta">
+        <a><%= campground.createdAt %></a>
+      </div>
+      <div class="description">
+        <%= campground.desc.substring(0,50) %>...
+      </div>
+    </div>
+    <div class="extra content">
+      <span class="left floated">
+       <a class="ui red button" href="/show/<%= campground._id%>">Read More</a>
+      </span>      
+      <span class="right floated">
+        <%= campground.date.toDateString() %>
+      </span>
+    </div>
+  </div>
+  <%})%>
+ </div>
+</div>
+
+<%-include("Partials/footer.ejs")-%>

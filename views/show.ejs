@@ -1,0 +1,45 @@
+<%-include('./Partials/header.ejs')-%>
+<div class="ui menu">
+  <div class="item ui left floated">
+    	<h1 class="ui left floated huge header">Blog</h1>  
+  </div>
+  <div class="item ui right floated">
+      <a href="/blog" class="ui right floated button positive large">More Blog</a>
+  </div>
+</div>
+ <div class="ui container">
+ 	<div class="ui segments">
+	  <div class="ui segment">
+	    <p class="ui huge header"><%= blog.name %></p>
+	  </div>
+	  <div class="ui secondary segment flex">
+	  <div class="image item">
+	  	<img src="<%= blog.image %>" class="ui image medium">
+	   </div>
+	   <div class="ui positive container item footer">
+	       <p><%= blog.desc %></p>
+	       <div class="flex">
+	       	<div class="">
+	          <a href="/show/<%= blog._id %>/edit" class="ui button basic positive">Update</a>
+	          <form action="/show/<%= blog._id %>/delete?_method=DELETE" method="POST" style="display: inline-block;">
+	            <button type="submit" class="ui button basic negative">Delete</button>
+	          <form>
+	        </div>
+	       	<div class="ui right floated">
+		      <i class="user icon"></i>
+		      <%= blog.date.toDateString() %>
+		    </div>
+		  </div>
+	   </div>
+	  </div>
+	</div>
+	  	<%blog.Comment.forEach(comment=>{%>
+	  	<%=comment%>
+		  <div class="ui message segment">
+		   <span class="ui huge header">Author : <%= comment.author; %></span>
+		   <p>Comment: <%= comment.comment; %></p>  
+		  </div>
+      <%})%>
+      <%=blog.Comment %>
+ </div>
+<%-include('./Partials/footer.ejs')-%>
