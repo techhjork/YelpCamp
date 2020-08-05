@@ -16,7 +16,7 @@ app.use(express.static('Public'))
 app.use(methodOverride("_method"))
 app.use(expressSanitizer())
 // Database Schema
-let url = `mongodb+srv://TechhUser:TechhPass@techhcluster.7lflw.mongodb.net/TechhDB?retryWrites=true&w=majority`
+let url = `mongodb+srv://TechhUser:<passowrd>@techhcluster.7lflw.mongodb.net/<DB>?retryWrites=true&w=majority`
 mongoose.connect(url,
 	{
 	   useNewUrlParser:true,
